@@ -17,8 +17,10 @@ class homeView(TemplateView):
         if form.is_valid():
             text = form.cleaned_data['post']
 
-        args = {'form': form, 'text': text}
-        return render(request, self.template_name, args)
+            args = {'form': form, 'text': text}
+            return render(request, self.template_name, args)
+        else:
+            return render(request, self.template_name, {'form': form})
 
 
 def port(requests):
@@ -36,4 +38,3 @@ def port(requests):
             print ("{} -> porta aberta".format(port))
 
     print ("Scan finalizado")
-
