@@ -19,15 +19,30 @@
 <div class="ui container inverted segment">
     <div class="ui search">
                 <div class="ui labeled input">
-
                       <div class="ui label">
-                        site ou ip
-                      </div>
-                      <input type="text" placeholder="pesquisar">
+                        Procurar portas abertas
+
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Pesquisar</button>
+                        </form>
+
+
+                          </div>
+
+                    <h2>{{ text }}</h2>
                     </div>
+
+
+
+
                 <div class="results"></div>
             </div>
 </div>
+
+
+
 
 </body>
 </html>
