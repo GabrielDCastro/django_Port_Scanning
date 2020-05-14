@@ -33,7 +33,11 @@
 
 
                     </div>
-<h2>{{ text }}</h2>
+
+        {% if portas_abertas %}
+        <h2>Portas que estão abertas</h2>
+        <h2>{{ portas_abertas }}</h2>
+        {% endif %}
 
 
 
