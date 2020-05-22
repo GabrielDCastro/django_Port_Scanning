@@ -6,49 +6,24 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.js"></script>
-
-
 </head>
 
-<style>
-    body{
-        background-color: #1b1c1d;
-        text-align: center;
-        padding: .5rem;
-    }
 
-    .item{
-    text-align: center;
-    }
-
-    .ui.inverted.segment, .ui.primary.inverted.segment {
-        background: #e8e8e8;
-        color: rgba(0,0,0,.6);
-    }
-
-    #navbar {
-            display: grid;
-            align-items: center;
-            grid-template-areas: 'ui.inverted.attached.menu';
-            background: #1b1c1d;;
-            padding: .1rem;
-        }
-</style>
 
 <body>
-<nav id="navbar">
-    <div class="ui inverted attached menu">
-        <div class="ui container">
+<div class="ui inverted attached menu">
+    <div class="ui container">
+    <a href="{% url 'home' %}" class="item">Django port-scanning</a>
 
-            <a href="{% url 'home' %}" class="item">Django port-scanning</a>
-
-        </a>
-        </div>
+    </a>
     </div>
-</nav>
+</div>
+
+
 <div class="ui container inverted segment">
+    <center>
     <div class="ui search">
-                <div class="ui labeled input" id="mostra">
+                <div class="ui labeled input">
                       <div class="ui label">
                         Procurar portas abertas
 
@@ -69,11 +44,16 @@
         <h2>{{ portas_abertas }}</h2>
         {% endif %}
 
+        {% if resposta_errada %}
+        <h2>Por favor insira um endereço ou IP válido</h2>
+        {% endif %}
+
 
 
                 <div class="results"></div>
             </div>
 </div>
+    </center>
 
 </body>
 </html>

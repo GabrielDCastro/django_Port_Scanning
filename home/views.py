@@ -16,7 +16,8 @@ class homeView(TemplateView):
         ports = [21, 22, 23, 25, 80, 135, 8080, 443, 3306]
         portas_abertas = []
         form = HomeForm(request.POST)
-        if form.is_valid():
+        try:
+            form.is_valid()
             ip = form.cleaned_data['post']
             for port in ports:
                 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,6 +28,7 @@ class homeView(TemplateView):
             text = form.cleaned_data['post']
             args = {'form': form, 'text': text, 'portas_abertas': portas_abertas}
             return render(request, self.template_name, args)
-        else:
-            return render(request, self.template_name, {'form': form})
+        except:
+            resposta_errada=True
+            return render(request, self.template_name, {'form': form, 'resposta_errada': resposta_errada})
 
