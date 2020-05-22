@@ -22,13 +22,17 @@ class homeView(TemplateView):
             for port in ports:
                 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 client.settimeout(0.2)  # tempo que vai testar cada conexão
-                code = client.connect_ex((ip, port))  # diz o site quer quer conectar e a porta
+                code = client.connect_ex((ip, port))  # diz o site quer conectar e a porta
                 if code == 0:
                     portas_abertas.append(port)
             text = form.cleaned_data['post']
             args = {'form': form, 'text': text, 'portas_abertas': portas_abertas}
             return render(request, self.template_name, args)
         except:
+<<<<<<< Updated upstream
             resposta_errada=True
             return render(request, self.template_name, {'form': form, 'resposta_errada': resposta_errada})
+=======
+            return render(request, self.template_name, {'form': form})
+>>>>>>> Stashed changes
 
