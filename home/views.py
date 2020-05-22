@@ -29,10 +29,8 @@ class homeView(TemplateView):
             args = {'form': form, 'text': text, 'portas_abertas': portas_abertas}
             return render(request, self.template_name, args)
         except:
-<<<<<<< Updated upstream
             resposta_errada=True
             return render(request, self.template_name, {'form': form, 'resposta_errada': resposta_errada})
-=======
             return render(request, self.template_name, {'form': form})
->>>>>>> Stashed changes
+
 
