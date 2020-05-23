@@ -1,19 +1,4 @@
 <!DOCTYPE html>
-<style>
-h2{
-    background-color:#3b3b3b;
-    color:#DDDDDD;
-    }
-
-button{
-    border-color:#3b3b3b;
-    background:linear-gradient(to bottom, #DDDDDD 15%, #3b3b3b 100%);
-    box-shadow:inset 0px 1px 0px 0px #3b3b3b;
-    color:write;
-    text-shadow:0px 1px 0px write;
-    }
-
-</style>
 <html lang="pt-br">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,58 +6,56 @@ button{
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.js"></script>
-
-
-
 </head>
 
 
 
-<body  style="background-color:#c7c5c5;">
+<body>
+<div class="ui inverted attached menu">
+    <div class="ui container">
+    <a href="{% url 'home' %}" class="item">Django port-scanning</a>
 
-  <form method="post">
-    {% csrf_token %}
-
-
-
-    <div  style="color:blue;background-color:#3b3b3b;height:55px;">
-
-
-       <!-- <a href="{% url 'home' %}" style="color:red;font-family:verdana;" ><b>Django port-scanning</b></a> -->
-           <a href="{% url 'home' %}" >
-               <img src="https://cdn.discordapp.com/attachments/575838657341161472/713510141194010674/Logo_PortScanner.jpeg" width="150">
-           </a>
-
-
+    </a>
     </div>
-      <hr style="background-color:#c7c5c5;height:3px;">
-    <div  style="background-color:#3b3b3b;">
-        <center>
-            <div >
+</div>
+
+
+<div class="ui container inverted segment">
+    <center>
+    <div class="ui search">
                 <div class="ui labeled input">
-                      <div class="ui label">   {{ form.as_p }}
+                      <div class="ui label">
                         Procurar portas abertas
-<!--
+
+                        <!--o formuçario vai ser do tipo post e o csrf é uma medida de proteção de ataques.
+                        (as_p) é uma formatação do django para deixar o texto do bloco igual ao nome da variável-->
                         <form method="post">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <button type="submit">Pesquisar</button>
                         </form>
--->
-                            <button type="submit">Pesquisar</button>
+
+
                       </div>
-                </div>
-                {% if portas_abertas %}
+
+
+                    </div>
+
+                    {% if portas_abertas %}
                     <h2>Portas que estão abertas</h2>
                     <h2>{{ portas_abertas }}</h2>
-                {% endif %}
-                {% if resposta_errada %}
-                   <h2>Por favor insira um endereço ou IP válido</h2>
-                {% endif %}
+                    {% endif %}
+
+                    {% if resposta_errada %}
+                    <h2>Por favor insira um endereço ou IP válido</h2>
+                    {% endif %}
+
+
+
                 <div class="results"></div>
             </div>
-        </center>
-    </div>
-    </form>
+</div>
+    </center>
+
 </body>
 </html>
